@@ -17,28 +17,32 @@ def obter_faturamento_distribuidor(preco_fabrica):
 def obter_custo_consumidor(custo_fabrica, faturamento_distribuidor):
     return custo_fabrica + faturamento_distribuidor
 
+def exibir_resultado(preco_fabrica, imposto, faturamento_distribuidor, custo_consumidor):
+        print(f"\n\tPreco de fabrica: {preco_fabrica}")
+        print(f"\tValor do imposto: {imposto}")
+        print(f"\tFaturamento do distribuidor: {faturamento_distribuidor}")
+        print("\t------------------------------------")
+        print(f"\tCusto do consumidor: {custo_consumidor}\n")
+
 def main():
-    custo_fabrica = obter_custo_fabrica()
+
+    while True:
+
+        try:
+            custo_fabrica = obter_custo_fabrica()
+
+            if custo_fabrica is not None:
+                break
+            
+        except ValueError:
+            print("Erro: Informe um valor valido!")
+
     imposto = obter_valor_imposto(custo_fabrica)
     preco_fabrica = obter_preco_final_fabrica(custo_fabrica, imposto)
     faturamento_distribuidor = obter_faturamento_distribuidor(preco_fabrica)
     custo_consumidor = obter_custo_consumidor(preco_fabrica, faturamento_distribuidor)
 
-    print(f"\n\tPreco de fabrica: {preco_fabrica}")
-    print(f"\tValor do imposto: {imposto}")
-    print(f"\tFaturamento do distribuidor: {faturamento_distribuidor}")
-    print("\t------------------------------------")
-    print(f"\tCusto do consumidor: {custo_consumidor}\n")
-
-    while True:
-
-        try:
-            if custo_fabrica is None:
-                break
-            custo_fabrica = obter_custo_fabrica()
-            
-        except ValueError:
-            print("Erro: Informe um valor valido!")
+    exibir_resultado(preco_fabrica, imposto, faturamento_distribuidor, custo_consumidor)
 
 if __name__ == "__main__":
     main()
