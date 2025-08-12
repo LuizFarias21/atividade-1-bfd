@@ -2,8 +2,15 @@ IMPOSTO = 20/100
 PORCENTAGEM_DISTRIBUIDOR = 8/100
 
 def obter_custo_fabrica():
-    custo_fabrica = float(input("Informe o preco de fabrica do carro: "))
-    return custo_fabrica
+    while True:
+        try:
+            custo_fabrica = float(input("Informe o preco de fabrica do carro: "))
+
+            if custo_fabrica is not None:
+                return custo_fabrica          
+        
+        except ValueError:
+            print("Erro: Informe um valor valido!")
 
 def obter_valor_imposto(custo_fabrica):
     return IMPOSTO * custo_fabrica
@@ -26,17 +33,7 @@ def exibir_resultado(preco_fabrica, imposto, faturamento_distribuidor, custo_con
 
 def main():
 
-    while True:
-
-        try:
-            custo_fabrica = obter_custo_fabrica()
-
-            if custo_fabrica is not None:
-                break
-            
-        except ValueError:
-            print("Erro: Informe um valor valido!")
-
+    custo_fabrica = obter_custo_fabrica()
     imposto = obter_valor_imposto(custo_fabrica)
     preco_fabrica = obter_preco_final_fabrica(custo_fabrica, imposto)
     faturamento_distribuidor = obter_faturamento_distribuidor(preco_fabrica)
