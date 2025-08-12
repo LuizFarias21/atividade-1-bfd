@@ -24,7 +24,7 @@ def obter_faturamento_distribuidor(preco_fabrica):
 def obter_custo_consumidor(custo_fabrica, faturamento_distribuidor):
     return custo_fabrica + faturamento_distribuidor
 
-# Aqui fiquei em duvida se era para imprimir custo de fabrica após a aplicação de impostos ou não.
+# Aqui fiquei em duvida se era para imprimir custo de fábrica após a aplicação de impostos ou não.
 # Decidi usar o custo de fábrica (o valor que o usuário digitou).
 def exibir_resultado(custo_fabrica, imposto, faturamento_distribuidor, custo_consumidor):
         print(f"\n\tPreco de fabrica: {custo_fabrica}")
